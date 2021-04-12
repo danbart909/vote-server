@@ -15,6 +15,5 @@ app.set('db', DATABASE)
 
 app.listen(PORT, () => {
   console.log(`Server listening at ${PORT}`)
-  console.log(DATABASE)
   console.log(DATABASE_URL)
 })
