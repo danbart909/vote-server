@@ -10,6 +10,6 @@ const DATABASE = knex({
 
 app.set('db', DATABASE)
 
-// app.listen(DATABASE_URL, () => {
-//   console.log(`Server listening at ${DATABASE_URL}`)
-// })
+app.listen(PORT, () => {
+  console.log(`Server listening at ${PORT}`)
+})
