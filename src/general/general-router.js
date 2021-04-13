@@ -82,6 +82,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, StateOrDate, DateOrTo)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
@@ -138,6 +139,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, StateOrDate, DateOrTo)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
@@ -195,6 +197,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, from, to)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
@@ -254,6 +257,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, StateOrDate, DateOrTo)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
@@ -314,6 +318,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, StateOrDate, DateOrTo)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
@@ -374,6 +379,7 @@ generalRouter
         .then(x => { res.json(x) }).catch(next)
     } else {
       officeService.officeFromTo(db, office, StateOrDate, DateOrTo)
+        .then(x => { res.json(x) }).catch(next)
     }
   })
 
