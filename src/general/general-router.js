@@ -11,27 +11,12 @@ generalRouter
   .route('/post')
 
     .post(bodyParser, (req, res, next) => {
-      let { name, office, state, rating, district1, district2, district3 } = req.body
+      let { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county } = req.body
       let db = req.app.get('db')
-      let wordRating = ''
-      
-      if (rating === 1) { wordRating = 'one' }
-      else if (rating === 2) { wordRating = 'two' }
-      else if (rating === 3) { wordRating = 'three' }
-      else if (rating === 4) { wordRating = 'four' }
-      else if (rating === 5) { wordRating = 'five' }
-      else if (rating === 6) { wordRating = 'six' }
-      else if (rating === 7) { wordRating = 'seven' }
-      else if (rating === 8) { wordRating = 'eight' }
-      else if (rating === 9) { wordRating = 'nine' }
-      else if (rating === 10) { wordRating = 'ten' }
 
-      let newRating = {
-        name, office, state, rating,
-        congressionaldistrict: district1,
-        strepdistrict: district2,
-        stsendistrict: district3
-      }
+      console.log('/post', req.body, req)
+
+      let newRating = { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county }
 
       generalService.insertRating(db, newRating)
       .catch(next)
