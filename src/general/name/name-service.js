@@ -1,7 +1,7 @@
 const nameService = {
 
   name(knex, name) {
-    let z = { name: name, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
+    let z = { name: name.replace(/([A-Z])/g, ' $1').trim(), total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('name', name)
       .then(x => {
@@ -19,7 +19,7 @@ const nameService = {
   },
 
   nameDate(knex, name, date) {
-    let z = { name: name, date: date, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
+    let z = { name: name.replace(/([A-Z])/g, ' $1').trim(), date: date, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where({ name: name, date: date })
       .then(x => {
@@ -37,7 +37,7 @@ const nameService = {
   },
 
   nameFromTo(knex, name, from, to) {
-    let z = { name: name, from: from, to: to, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
+    let z = { name: name.replace(/([A-Z])/g, ' $1').trim(), from: from, to: to, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('name', name)
       .whereBetween('date', [from, to])
