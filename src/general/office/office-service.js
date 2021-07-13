@@ -73,10 +73,10 @@ const officeService = {
       })
   },
 
-  officeStateDate(knex, office, StateOrDate, DateOrTo) {
+  officeStateDate(knex, office, stateOrDate, dateOrTo) {
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
-      .where({ office: office, state: StateOrDate, date: DateOrTo })
+      .where({ office: office, state: stateOrDate, date: dateOrTo })
       .then(x => {
         x.map(y => {
           y.rating === 1 ? (z.one += 1, z.total += 1) :
@@ -95,7 +95,7 @@ const officeService = {
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
     .where({ office: office, state: state })
-    .whereBetween('date', [z.from, z.to])
+    .whereBetween('date', [from, to])
       .then(x => {
         x.map(y => {
           y.rating === 1 ? (z.one += 1, z.total += 1) :
