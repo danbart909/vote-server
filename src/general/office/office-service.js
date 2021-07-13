@@ -1,6 +1,7 @@
 const officeService = {
 
   office(knex, office) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('office', office)
@@ -19,6 +20,7 @@ const officeService = {
   },
 
   officeDate(knex, office, date) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where({ office: office, date: date })
@@ -37,6 +39,7 @@ const officeService = {
   },
 
   officeState(knex, office, state) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where({ office: office, state: state })
@@ -55,6 +58,7 @@ const officeService = {
   },
 
   officeFromTo(knex, office, from, to) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('office', office)
@@ -74,6 +78,7 @@ const officeService = {
   },
 
   officeStateDate(knex, office, stateOrDate, dateOrTo) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where({ office: office, state: stateOrDate, date: dateOrTo })
@@ -92,6 +97,7 @@ const officeService = {
   },
 
   officeStateFromTo(knex, office, state, from, to) {
+    office = office.replace(/([A-Z])/g, ' $1').trim()
     let z = { office: office, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
     .where({ office: office, state: state })
