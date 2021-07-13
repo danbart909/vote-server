@@ -83,25 +83,25 @@ generalRouter
   })
 
 
-//////////////////// USSenator
+//////////////////// Senator
 
 
 generalRouter
-  .route('/USSenator')
+  .route('/Senator')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USSenator'
+    let office = 'Senator'
     officeService.office(db, office)
       .then(x => { res.json(x) }).catch(next)
   })
 
 generalRouter
-  .route('/USSenator/:StateOrDate')
+  .route('/Senator/:StateOrDate')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USSenator'
+    let office = 'Senator'
     let StateOrDate = req.params.StateOrDate
      if (StateOrDate.length === 2) {
       officeService.officeState(db, office, StateOrDate)
@@ -113,11 +113,11 @@ generalRouter
   })
 
 generalRouter
-  .route('/USSenator/:StateOrDate/:DateOrTo')
+  .route('/Senator/:StateOrDate/:DateOrTo')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USSenator'
+    let office = 'Senator'
     let { StateOrDate, DateOrTo } = req.params
     if (StateOrDate.length === 2) {
       officeService.officeStateDate(db, office, StateOrDate, DateOrTo)
@@ -129,36 +129,36 @@ generalRouter
   })
 
 generalRouter
-  .route('/USSenator/:State/:from/:to')
+  .route('/Senator/:State/:from/:to')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USSenator'
+    let office = 'Senator'
     let { State, from, to } = req.params
     officeService.officeStateFromTo(db, office, State, from, to)
       .then(x => { res.json(x) }).catch(next)
   })
 
 
-//////////////////// USRepresentative
+//////////////////// HouseRepresentative
 
 
 generalRouter
-  .route('/USRepresentative')
+  .route('/HouseRepresentative')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USRepresentative'
+    let office = 'House Representative'
     officeService.office(db, office)
       .then(x => { res.json(x) }).catch(next)
   })
 
 generalRouter
-  .route('/USRepresentative/:StateOrDate')
+  .route('/HouseRepresentative/:StateOrDate')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USRepresentative'
+    let office = 'House Representative'
     let StateOrDate = req.params.StateOrDate
      if (StateOrDate.length === 2) {
       officeService.officeState(db, office, StateOrDate)
@@ -170,11 +170,11 @@ generalRouter
   })
 
 generalRouter
-  .route('/USRepresentative/:StateOrDate/:DateOrTo')
+  .route('/HouseRepresentative/:StateOrDate/:DateOrTo')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USRepresentative'
+    let office = 'House Representative'
     let { StateOrDate, DateOrTo } = req.params
     let from = StateOrDate, to = DateOrTo
     if (StateOrDate.length === 2) {
@@ -187,11 +187,11 @@ generalRouter
   })
 
 generalRouter
-  .route('/USRepresentative/:State/:from/:to')
+  .route('/HouseRepresentative/:State/:from/:to')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
-    let office = 'USRepresentative'
+    let office = 'House Representative'
     let { State, from, to } = req.params
     officeService.officeStateFromTo(db, office, State, from, to)
       .then(x => { res.json(x) }).catch(next)
@@ -268,7 +268,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateSenator')
     let db = req.app.get('db')
-    let office = 'StateSenator'
+    let office = 'State Senator'
     officeService.office(db, office)
       .then(x => { res.json(x) }).catch(next)
   })
@@ -279,7 +279,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateSenator/:StateOrDate')
     let db = req.app.get('db')
-    let office = 'StateSenator'
+    let office = 'State Senator'
     let StateOrDate = req.params.StateOrDate
      if (StateOrDate.length === 2) {
       officeService.officeState(db, office, StateOrDate)
@@ -296,7 +296,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateSenator/:StateOrDate/:DateOrTo')
     let db = req.app.get('db')
-    let office = 'StateSenator'
+    let office = 'State Senator'
     let { StateOrDate, DateOrTo } = req.params
     if (StateOrDate.length === 2) {
       officeService.officeStateDate(db, office, StateOrDate, DateOrTo)
@@ -313,7 +313,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateSenator/:State/:from/:to')
     let db = req.app.get('db')
-    let office = 'StateSenator'
+    let office = 'State Senator'
     let { State, from, to } = req.params
     officeService.officeStateFromTo(db, office, State, from, to)
       .then(x => { res.json(x) }).catch(next)
@@ -329,7 +329,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateRepresentative/:State/:from/:to')
     let db = req.app.get('db')
-    let office = 'StateRepresentative'
+    let office = 'State Representative'
     officeService.office(db, office)
       .then(x => { res.json(x) }).catch(next)
   })
@@ -340,7 +340,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateRepresentative/:State/:from/:to')
     let db = req.app.get('db')
-    let office = 'StateRepresentative'
+    let office = 'State Representative'
     let StateOrDate = req.params.StateOrDate
      if (StateOrDate.length === 2) {
       officeService.officeState(db, office, StateOrDate)
@@ -357,7 +357,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateRepresentative/:State/:from/:to')
     let db = req.app.get('db')
-    let office = 'StateRepresentative'
+    let office = 'State Representative'
     let { StateOrDate, DateOrTo } = req.params
     if (StateOrDate.length === 2) {
       officeService.officeStateDate(db, office. StateOrDate, DateOrTo)
@@ -374,7 +374,7 @@ generalRouter
   .get((req, res, next) => {
     console.log('/StateRepresentative/:State/:from/:to')
     let db = req.app.get('db')
-    let office = 'StateRepresentative'
+    let office = 'State Representative'
     let { State, from, to } = req.params
     officeService.officeStateFromTo(db, office, State, from, to)
       .then(x => { res.json(x) }).catch(next)
