@@ -11,12 +11,12 @@ generalRouter
   .route('/post')
 
     .post(bodyParser, (req, res, next) => {
-      let { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county } = req.body
+      let { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county, party, age, ethnicity, gender } = req.body
       let db = req.app.get('db')
 
       console.log('/post', req.body, req)
 
-      let newRating = { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county }
+      let newRating = { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county, party, age, ethnicity, gender }
 
       generalService.insertRating(db, newRating)
       .catch(next)
