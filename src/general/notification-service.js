@@ -29,6 +29,14 @@ const notificationService = {
       }
     })();
 
+    let receiptIds = [];
+      for (let ticket of tickets) {
+        // NOTE: Not all tickets have IDs; for example, tickets for notifications that could not be enqueued will have error information and no receipt ID.
+        if (ticket.id) {
+          receiptIds.push(ticket.id);
+        }
+      }
+
     let receiptIdChunks = expo.chunkPushNotificationReceiptIds(receiptIds);
     (async () => {
       // Like sending notifications, there are different strategies you could use
