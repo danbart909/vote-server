@@ -13,6 +13,8 @@ const notificationService = {
       data: { withSome: 'data' }
     })
 
+    console.log(messages)
+
     let chunks = expo.chunkPushNotifications(messages);
     let tickets = [];
 
