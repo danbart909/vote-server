@@ -19,7 +19,7 @@ generalRouter
 
       let newRating = { name, office, state, rating, congressional_district, state_senate_district, lower_house_district, city, county, party, age, ethnicity, gender }
 
-      notificationService.setNotification(expoPushToken)
+      // notificationService.setNotification(expoPushToken)
 
       generalService.insertRating(db, newRating)
       .catch(next)
