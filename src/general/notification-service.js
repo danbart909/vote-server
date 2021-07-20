@@ -11,13 +11,13 @@ const notificationService = {
       data: { withSome: 'data' }
     })
 
-    let chunks = expo.chunkPushNotifications(messages);
+    let chunks = Expo.chunkPushNotifications(messages);
     let tickets = [];
 
     (async () => {
       for (let chunk of chunks) {
         try {
-          let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
+          let ticketChunk = await Expo.sendPushNotificationsAsync(chunk);
           console.log(ticketChunk);
           tickets.push(...ticketChunk);
           // NOTE: If a ticket contains an error code in ticket.details.error, you must handle it appropriately. The error codes are listed in the Expo documentation: https://docs.expo.io/push-notifications/sending-notifications/#individual-errors
@@ -27,13 +27,13 @@ const notificationService = {
       }
     })();
 
-    let receiptIdChunks = expo.chunkPushNotificationReceiptIds(receiptIds);
+    let receiptIdChunks = Expo.chunkPushNotificationReceiptIds(receiptIds);
     (async () => {
       // Like sending notifications, there are different strategies you could use
       // to retrieve batches of receipts from the Expo service.
       for (let chunk of receiptIdChunks) {
         try {
-          let receipts = await expo.getPushNotificationReceiptsAsync(chunk);
+          let receipts = await Expo.getPushNotificationReceiptsAsync(chunk);
           console.log(receipts);
 
           // The receipts specify whether Apple or Google successfully received the
