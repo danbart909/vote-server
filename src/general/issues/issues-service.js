@@ -2,22 +2,28 @@ const issuesService = {
 
   getQuestions(knex) {
     return knex('issues')
-      .orderBy('date')
+      .orderBy('date', 'desc')
       .limit(2)
       .then(rows => {
         return rows
       })
   },
 
-  getResults(knex, id) {
+  getByTitle(knex, title) {
     return knex('issues')
-      .where('id', id)
+      .where('title', title)
       .then(rows => {
         return rows
       })
   },
 
-  plusOne(knex, id, option) {
+  plusOne(knex, id, answer) {
+    let option = ''
+    answer === 1 ? option = 'option1' :
+    answer === 2 ? option = 'option2' :
+    answer === 3 ? option = 'option3' :
+    answer === 4 ? option = 'option4' :
+    answer === 5 ? option = 'option5' : null
     return knex('issues')
       .where('id', id)
       .increment(option, 1)

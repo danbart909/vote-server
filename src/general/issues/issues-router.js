@@ -13,21 +13,22 @@ issuesRouter
   })
 
   issuesRouter
-  .route('/answers/:id')
+  .route('/:id')
 
   .post(bodyParser, (req, res, next) => {
     let db = req.app.get('db')
     let { id } = req.params
-    issuesService.plusOne(db, id)
+    let { answer } = req.body
+    issuesService.plusOne(db, id, answer)
       .then(x => { res.json(x) }).catch(next)
   })
 
-  .get((req, res, next) => {
-    let db = req.app.get('db')
-    let { id } = req.params
-    let { answer } = req.body
-    issuesService.getResults(db, id, answer)
-      .then(x => { res.json(x) }).catch(next)
-  })
+  // .get((req, res, next) => {
+  //   let db = req.app.get('db')
+  //   let { id } = req.params
+  //   let { answer } = req.body
+  //   issuesService.getResults(db, id, answer)
+  //     .then(x => { res.json(x) }).catch(next)
+  // })
 
   module.exports = issuesRouter
