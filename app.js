@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const generalRouter = require('./src/general/general-router')
+const issuesRouter = require('./src/general/issues/issues-router')
 const cngRouter = require('./src/general/congressional/district1-router')
 const senRouter = require('./src/general/senate/district2-router')
 const lowRouter = require('./src/general/lowerHouse/district3-router')
@@ -25,6 +26,7 @@ app
   .use('/lowerHouse', lowRouter)
   .use('/city', cityRouter)
   .use('/county', countyRouter)
+  .use('/issues', issuesRouter)
   .use('/', generalRouter)
 
 module.exports = app
