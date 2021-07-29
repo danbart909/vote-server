@@ -4,7 +4,7 @@ const issuesService = require('./issues-service')
 const bodyParser = express.json()
 
 issuesRouter
-  .router('/latest')
+  .route('/latest')
 
   .get((req, res, next) => {
     let db = req.app.get('db')
@@ -13,7 +13,7 @@ issuesRouter
   })
 
   issuesRouter
-  .router('/answers/:id')
+  .route('/answers/:id')
 
   .post(bodyParser, (req, res, next) => {
     let db = req.app.get('db')
