@@ -3,7 +3,7 @@ const issuesService = {
   getQuestions(knex) {
     return knex('issues')
       .orderBy('date', 'desc')
-      .limit(2)
+      .limit(3)
       .then(rows => {
         return rows
       })
