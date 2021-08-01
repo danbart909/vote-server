@@ -1,7 +1,7 @@
-const issuesService = {
+const surveysService = {
 
   getQuestions(knex) {
-    return knex('issues')
+    return knex('surveys')
       .orderBy('id', 'desc')
       .limit(3)
       .then(rows => {
@@ -10,7 +10,7 @@ const issuesService = {
   },
 
   getByTitle(knex, title) {
-    return knex('issues')
+    return knex('surveys')
       .where('title', title)
       .then(rows => {
         return rows
@@ -24,7 +24,7 @@ const issuesService = {
     answer === 3 ? option = 'option3' :
     answer === 4 ? option = 'option4' :
     answer === 5 ? option = 'option5' : null
-    return knex('issues')
+    return knex('surveys')
       .where('id', id)
       .increment(option, 1)
       .then(rows => {
@@ -39,4 +39,4 @@ const issuesService = {
 
 }
 
-module.exports = issuesService
+module.exports = surveysService
