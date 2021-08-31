@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const electionsRouter = require('./src/elections/elections-router')
 const generalRouter = require('./src/general/general-router')
 const surveysRouter = require('./src/general/surveys/surveys-router')
 const cngRouter = require('./src/general/congressional/district1-router')
@@ -27,6 +28,7 @@ app
   .use('/city', cityRouter)
   .use('/county', countyRouter)
   .use('/surveys', surveysRouter)
+  .use('/elections', electionsRouter)
   .use('/', generalRouter)
 
 module.exports = app
