@@ -22,13 +22,13 @@ app
   .use(helmet())
   .use(cors())
   .use(express.json())
+  .use('/elections', electionsRouter)
   .use('/congressional', cngRouter)
   .use('/senate', senRouter)
   .use('/lowerHouse', lowRouter)
   .use('/city', cityRouter)
   .use('/county', countyRouter)
   .use('/surveys', surveysRouter)
-  .use('/elections', electionsRouter)
   .use('/', generalRouter)
 
 module.exports = app
