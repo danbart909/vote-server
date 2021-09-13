@@ -40,15 +40,26 @@ electionsRouter
     })
 
 electionsRouter
-  .route('/get/:state/:office/:district')
+  .route('/get/:state/:office/:district/:date')
 
     .get((req, res, next) => {
       let db = req.app.get('db')
-      let { state, office, district } = req.params
+      let { state, office, district, date } = req.params
 
-      electionsService.getDistrict(db, state, office, district)
+      electionsService.getDistrictSingleDay(db, state, office, district, date)
         .then(x => { res.json(x) }).catch(next)
     })
+
+electionsRouter
+    .route('/get/:state/:office/:district/:date1/:date2')
+  
+      .get((req, res, next) => {
+        let db = req.app.get('db')
+        let { state, office, district, date1, date2 } = req.params
+  
+        electionsService.getDistrictDates(db, state, office, district, date1, date2)
+          .then(x => { res.json(x) }).catch(next)
+      })
 
 
 // Name

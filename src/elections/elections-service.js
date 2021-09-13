@@ -25,13 +25,30 @@ const electionsService = {
       })
   },
 
-  getDistrict(knex, state, office, district) {
+  getDistrictSingleDay(knex, state, office, district, date) {
+    return knex('elections')
+      .where({
+        state: state,
+        office: office,
+        district: district,
+        date: date
+      })
+      .distinct('name')
+      .count('name')
+      .groupBy('name')
+      .then(x => {
+        return x
+      })
+  },
+
+  getDistrictDates(knex, state, office, district, date1, date2) {
     return knex('elections')
       .where({
         state: state,
         office: office,
         district: district
       })
+      .whereBetween('date', [date1, date2])
       .distinct('name')
       .count('name')
       .groupBy('name')
