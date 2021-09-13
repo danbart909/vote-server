@@ -45,9 +45,7 @@ electionsRouter
 
     .get((req, res, next) => {
       let db = req.app.get('db')
-      let { state, office, district } = req.body
-
-      console.log(req.body)
+      let { state, office, district } = req.params
 
       electionsService.getDistrict(db, state, office, district)
         .then(x => { res.json(x) }).catch(next)
