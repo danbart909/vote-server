@@ -29,6 +29,30 @@ electionsRouter
         .then(x => { res.json(x) }).catch(next)
     })
 
+electionsRouter
+  .route('/all')
+
+    .get((req, res, next) => {
+      let db = req.app.get('db')
+
+      electionsService.getAll(db)
+        .then(x => { res.json(x) }).catch(next)
+    })
+
+electionsRouter
+  // .route('/get/:state:/office:/district')
+  .route('/get')
+
+    .get((req, res, next) => {
+      let db = req.app.get('db')
+      let { state, office, district } = req.body
+
+      console.log(req.body)
+
+      electionsService.getDistrict(db, state, office, district)
+        .then(x => { res.json(x) }).catch(next)
+    })
+
 
 // Name
 
@@ -43,91 +67,91 @@ electionsRouter
         .then(x => { res.json(x) }).catch(next)
     })
 
-electionsRouter
-  .route('/name/:name')
+// electionsRouter
+//   .route('/name/:name')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
-      let { name } = req.params
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
+//       let { name } = req.params
 
-      electionsService.getCountsByName(db, name)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getCountsByName(db, name)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
 
 // Party
 
 
-electionsRouter
-  .route('/party/all')
+// electionsRouter
+//   .route('/party/all')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
 
-      electionsService.getAllByParty(db)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getAllByParty(db)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
-electionsRouter
-  .route('/party/:party')
+// electionsRouter
+//   .route('/party/:party')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
-      let { party } = req.params
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
+//       let { party } = req.params
 
-      electionsService.getCountsByParty(db, party)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getCountsByParty(db, party)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
 
 // State
 
 
-electionsRouter
-  .route('/state/all')
+// electionsRouter
+//   .route('/state/all')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
 
-      electionsService.getAllByState(db)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getAllByState(db)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
   
-electionsRouter
-  .route('/state/:state')
+// electionsRouter
+//   .route('/state/:state')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
-      let { state } = req.params
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
+//       let { state } = req.params
 
-      electionsService.getCountsByState(db, state)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getCountsByState(db, state)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
 
 // Office
 
 
-electionsRouter
-  .route('/office/all')
+// electionsRouter
+//   .route('/office/all')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
 
-      electionsService.getAllByOffice(db)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getAllByOffice(db)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
-electionsRouter
-  .route('/office/:office')
+// electionsRouter
+//   .route('/office/:office')
 
-    .get((req, res, next) => {
-      let db = req.app.get('db')
-      let { office } = req.params
+//     .get((req, res, next) => {
+//       let db = req.app.get('db')
+//       let { office } = req.params
 
-      electionsService.getCountsByOffice(db, office)
-        .then(x => { res.json(x) }).catch(next)
-    })
+//       electionsService.getCountsByOffice(db, office)
+//         .then(x => { res.json(x) }).catch(next)
+//     })
 
 
 // District
