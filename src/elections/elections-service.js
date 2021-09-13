@@ -26,12 +26,15 @@ const electionsService = {
   },
 
   getDistrict(knex, state, office, district) {
-    console.log(state, office, district)
     return knex('elections')
-      .select('*')
-      .where({state: state})
-      .where({office: office})
-      .where({district: district})
+      .where({
+        state: state,
+        office: office,
+        district: district
+      })
+      .distinct('name')
+      .count('name')
+      .groupBy('name')
       .then(x => {
         return x
       })

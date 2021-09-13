@@ -40,8 +40,7 @@ electionsRouter
     })
 
 electionsRouter
-  // .route('/get/:state:/office:/district')
-  .route('/get')
+  .route('/get/:state/:office/:district')
 
     .get((req, res, next) => {
       let db = req.app.get('db')
