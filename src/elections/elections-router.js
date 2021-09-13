@@ -46,8 +46,6 @@ electionsRouter
       let db = req.app.get('db')
       let { state, office, district, date } = req.params
 
-      console.log(state, office, district, date)
-
       electionsService.getDistrictSingleDay(db, state, office, district, date)
         .then(x => { res.json(x) }).catch(next)
     })
