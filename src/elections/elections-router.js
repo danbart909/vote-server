@@ -46,6 +46,8 @@ electionsRouter
       let db = req.app.get('db')
       let { state, office, district, date } = req.params
 
+      console.log('single date', req.params)
+
       electionsService.getDistrictSingleDay(db, state, office, district, date)
         .then(x => { res.json(x) }).catch(next)
     })
@@ -56,6 +58,8 @@ electionsRouter
       .get((req, res, next) => {
         let db = req.app.get('db')
         let { state, office, district, date1, date2 } = req.params
+
+        console.log('two dates', req.params)
   
         electionsService.getDistrictDates(db, state, office, district, date1, date2)
           .then(x => { res.json(x) }).catch(next)

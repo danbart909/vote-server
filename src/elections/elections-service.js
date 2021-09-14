@@ -37,6 +37,7 @@ const electionsService = {
       .count('name')
       .groupBy('name')
       .then(x => {
+        console.log('service 1', x, state, office, district, date)
         return x
       })
   },
@@ -53,6 +54,7 @@ const electionsService = {
       .count('name')
       .groupBy('name')
       .then(x => {
+        console.log('service 2', x, state, office, district, date1, date2)
         return x
       })
   },
