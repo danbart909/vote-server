@@ -8,8 +8,8 @@ electionsRouter
   .route('/vote')
 
     .post(bodyParser, (req, res, next) => {
-      let { name, party, state, office, district, city, county, userParty, age, ethnicity, gender } = req.body
-      let newVote = { name, party, state, office, district, city, county, userParty, age, ethnicity, gender }
+      let { name, party, state, office, district, city, county, user_party, age, ethnicity, gender } = req.body
+      let newVote = { name, party, state, office, district, city, county, user_party, age, ethnicity, gender }
       let db = req.app.get('db')
 
       electionsService.insertRating(db, newVote)
