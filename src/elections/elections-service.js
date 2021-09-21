@@ -33,9 +33,10 @@ const electionsService = {
         district: district,
         date: date
       })
+      .select('name', 'party')
       .distinct('name')
+      .groupBy('name', 'party')
       .count('name')
-      .groupBy('name')
       .then(x => {
         return x
       })
@@ -49,9 +50,10 @@ const electionsService = {
         district: district
       })
       .whereBetween('date', [date1, date2])
+      .select('name', 'party')
       .distinct('name')
+      .groupBy('name', 'party')
       .count('name')
-      .groupBy('name')
       .then(x => {
         return x
       })
