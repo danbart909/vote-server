@@ -1,7 +1,7 @@
 const nameService = {
 
   name(knex, name) {
-    let nameWithSpace = name.replace(/([A-Z])/g, ' $1').trim()
+    let nameWithSpace = name.replace(/((?<! )(?<![A-Z][a-z])(?<=[a-z])[A-Z][a-z]|[a-z][']|(?<=[Dr])[A-Z])/g, ' $1')
     let z = { name: nameWithSpace, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('name', nameWithSpace)
@@ -20,7 +20,7 @@ const nameService = {
   },
 
   nameDate(knex, name, date) {
-    let nameWithSpace = name.replace(/([A-Z])/g, ' $1').trim()
+    let nameWithSpace = name.replace(/((?<! )(?<![A-Z][a-z])(?<=[a-z])[A-Z][a-z]|[a-z][']|(?<=[Dr])[A-Z])/g, ' $1')
     let z = { name: nameWithSpace, date: date, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where({ name: nameWithSpace, date: date })
@@ -39,7 +39,7 @@ const nameService = {
   },
 
   nameFromTo(knex, name, from, to) {
-    let nameWithSpace = name.replace(/([A-Z])/g, ' $1').trim()
+    let nameWithSpace = name.replace(/((?<! )(?<![A-Z][a-z])(?<=[a-z])[A-Z][a-z]|[a-z][']|(?<=[Dr])[A-Z])/g, ' $1')
     let z = { name: nameWithSpace, from: from, to: to, total: 0, one: 0, two: 0, three: 0, four: 0, five: 0 }
     return knex('data')
       .where('name', nameWithSpace)
